@@ -2,6 +2,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Poppins:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@300&family=Open+Sans:wght@300&family=Poppins:wght@200&display=swap');
 
+body {
+    background-color: #f8f9fa;
+  }
+  
+  .card img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+    padding: 0.75rem;
+  }
+  
+  .card-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .card-subtitle {
+    font-size: 0.75rem;
+  }
+  
+  small.text-muted {
+    font-size: 0.7rem;
+  }
+  
 
 .fixed-header {
     background-color: #ffffff; /* or any color you want */

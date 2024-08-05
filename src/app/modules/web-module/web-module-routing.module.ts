@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { LeaningComponent } from './leaning/leaning.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,12 @@ const routes: Routes = [
         component: HomeComponent
       },
     ],
+  },
+
+  {
+    path: 'learning',
+    component: LeaningComponent,
+    pathMatch: 'full'
   },
 
   {
