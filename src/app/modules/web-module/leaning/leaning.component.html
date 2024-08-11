@@ -1,6 +1,6 @@
 <ion-content>
   <div class="oval-container">
-    <button class="btn btn-primary btn-sm mt-3 l-profile-btn"> + Create Learning Profile</button>
+    <button class="btn btn-primary btn-sm mt-3 l-profile-btn" id="open-modal" expand="block"> + Create Learning Profile</button>
   </div>
   <div class="container">
     <h4>All Learning Profiles</h4>
@@ -29,4 +29,44 @@
       </div>
     </div>
   </div>
+
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Create Learning Profile</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-input
+            label="Enter Module name"
+            labelPlacement="stacked"
+            type="text"
+            placeholder="Your Module Name"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-select label="Module Level" placeholder="Select You Level">
+            <ion-select-option value="apple">Beginner</ion-select-option>
+            <ion-select-option value="banana">Intermidiate</ion-select-option>
+            <ion-select-option value="orange">Advanced</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <label for="">Want to Include Youtube Link References ?</label>
+          <ion-radio-group value="strawberries">
+            <ion-radio value="grapes">Yes</ion-radio><br />
+            <ion-radio value="strawberries">No</ion-radio><br />
+          </ion-radio-group>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>
