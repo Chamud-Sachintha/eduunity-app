@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Router } from '@angular/router';
 import { AlertController, IonicModule, Platform, isPlatform } from '@ionic/angular';
 import { CommonModule, Location } from '@angular/common';
+import { Auth } from 'src/app/models/Auth/auth';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -13,6 +15,7 @@ import { CommonModule, Location } from '@angular/common';
 })
 export class SigninComponent  implements OnInit {
 
+  authModel = new Auth();
   clientLoginForm!: FormGroup;
   isShowPassword = false;
 
@@ -29,7 +32,7 @@ export class SigninComponent  implements OnInit {
   userEmailRegEx = new RegExp("[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}");
 
   constructor(private formBuilder: FormBuilder, private router: Router, private alertController: AlertController,
-              private platform: Platform, private location: Location) { 
+              private platform: Platform, private location: Location, private authService: AuthService) { 
     
     this.platform.backButton.subscribeWithPriority(10, () => {
       this.location.back();
@@ -107,12 +110,22 @@ export class SigninComponent  implements OnInit {
     } else if (!this.userEmailRegEx.test(userName)) {
       this.presentAlert("Invalid Input Format", "Enter Valid Email Address");
     } else {
-      // this.client.userName = userName;
-      // this.client.password = password;
+      this.authModel.userName = userName;
+      this.authModel.password = password;
 
-      if (userName === "chamud@gmail.com" && password === "123") {
-        this.router.navigate(['/home'])
-      }
+      this.authService.authenticateUser(this.authModel).subscribe((resp: any) => {
+        if (resp.code === 1) {
+          this.presentAlert("Login Student", "Login Successfully");
+          sessionStorage.setItem("userId", resp.data.id);
+          sessionStorage.setItem("token", resp.token);
+
+          setTimeout(() => {
+            this.router.navigate(['/home'])
+          }, 1000);
+        } else {
+          this.presentAlert("Login Student", resp.message);
+        }
+      })
     }
   }
 

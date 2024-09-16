@@ -10,17 +10,17 @@
 		</div>
 		<div class="row">
 			<div class="col-12">
-				<form action="" class="form-group">
+				<form action="" class="form-group" [formGroup]="clientLoginForm" (ngSubmit)="onSubmitClientLoginForm()">
 					<div class="row mt-3">
 						<div class="col-12">
 							<input type="text" class="form-control text-input" placeholder="Enter your Email"
-								>
+								formControlName="userName">
 						</div>
 					</div>
 					<div class="row mt-3">
 						<div class="col-12">
 							<input type="text" class="form-control text-input" placeholder="Enter your Password"
-								>
+								formControlName="password">
 						</div>
 					</div>
 					<div class="row mt-3 mb-5">
