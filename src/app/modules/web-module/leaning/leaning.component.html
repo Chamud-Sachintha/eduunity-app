@@ -5,25 +5,13 @@
   <div class="container">
     <h4>All Learning Profiles</h4>
 
-    <div class="card learning-profile-card">
+    <div class="card learning-profile-card" *ngFor="let eachModule of this.moduleList" (click)="onClickModule(eachModule.id)">
       <div class="card-body">
-        <h6>Introduction to Neural Networks</h6>
+        <h6>{{ eachModule.moduleName }}</h6>
 
         <div class="row">
           <div class="col-5">
-            <p>Modules: 10</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card learning-profile-card">
-      <div class="card-body">
-        <h6>Microservices Architecture</h6>
-
-        <div class="row">
-          <div class="col-5">
-            <p>Modules: 5</p>
+            <p>Modules: {{ eachModule.moduleContent.modules.length }}</p>
           </div>
         </div>
       </div>

@@ -1,0 +1,26 @@
+<ion-content>
+  <div class="oval-container"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <h4>All Module Topics</h4>
+      </div>
+      <div class="col-6">
+        <ion-item style="float: right;">
+          <ion-badge color="success">{{ this.topicListPageModel.experiancedLevel }}</ion-badge>
+        </ion-item>
+      </div>
+    </div>
+    <!-- List of chapters -->
+  <ul class="list-group">
+    <!-- Chapter 1 -->
+    <li class="list-group-item d-flex justify-content-between align-items-center chapter-item" *ngFor="let eachTopic of this.topicListPageModel.modules; index as i" (click)="onClickTopic(eachTopic.title)">
+      <div>
+        <i class="bi bi-book chapter-icon me-2"></i> <!-- Bootstrap icon -->
+        Chapter {{ i + 1 }}: {{ eachTopic.title }}
+      </div>
+      <span class="badge bg-primary rounded-pill">{{ i + 1 }}</span> <!-- Chapter number badge -->
+    </li>
+  </ul>
+  </div>
+</ion-content>

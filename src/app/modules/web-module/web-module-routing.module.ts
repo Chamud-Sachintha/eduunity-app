@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LeaningComponent } from './leaning/leaning.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
+import { InsideModuleComponent } from './inside-module/inside-module.component';
+import { InsideTopicComponent } from './inside-topic/inside-topic.component';
 
 const routes: Routes = [
   {
@@ -9,7 +12,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [AuthGuard]
       },
     ],
   },
@@ -17,6 +21,18 @@ const routes: Routes = [
   {
     path: 'learning',
     component: LeaningComponent,
+    pathMatch: 'full'
+  },
+
+  {
+    path: 'inside-module/:moduleId',
+    component: InsideModuleComponent,
+    pathMatch: 'full'
+  },
+
+  {
+    path: 'inside-topic/:moduleId',
+    component: InsideTopicComponent,
     pathMatch: 'full'
   },
 

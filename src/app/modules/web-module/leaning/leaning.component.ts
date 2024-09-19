@@ -1,12 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IonicModule, IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { GeminiService } from 'src/app/services/gemini/gemini.service';
 
 @Component({
   selector: 'app-leaning',
   templateUrl: './leaning.component.html',
   styleUrls: ['./leaning.component.scss'],
-  imports: [IonicModule],
+  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule],
   standalone: true
 })
 export class LeaningComponent  implements OnInit {
@@ -15,8 +19,33 @@ export class LeaningComponent  implements OnInit {
 
   message = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
   name!: string;
+  userId!: any;
+  moduleList: any[] = [];
 
-  constructor() { }
+  constructor(private geminiService: GeminiService, private router: Router) { }
+
+  ngOnInit() {
+    this.userId = sessionStorage.getItem("userId");
+    this.loadModuleList();
+  }
+
+  onClickModule(moduleId: any) {
+    this.router.navigate(['inside-module', moduleId]);
+  }
+
+  loadModuleList() {
+    this.geminiService.getAllGeneratedModules(this.userId).subscribe((resp: any) => {
+      if (resp.code === 1) {
+        const dataList = JSON.parse(JSON.stringify(resp));
+
+        dataList.content.forEach((el: any) => {
+          this.moduleList.push(el);
+        })
+      } else {
+        
+      }
+    })
+  }
 
   cancel() {
     this.modal.dismiss(null, 'cancel');
@@ -33,6 +62,5 @@ export class LeaningComponent  implements OnInit {
     }
   }
 
-  ngOnInit() {}
 
 }

@@ -40,6 +40,7 @@ export class SigninComponent  implements OnInit {
   }
 
   ngOnInit() {
+    localStorage.removeItem("hasRefreshed");
     this.createSigninForm();
 
     const getTabBar = document.getElementById("testYYU");

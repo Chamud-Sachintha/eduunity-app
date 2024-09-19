@@ -23,4 +23,8 @@ export class AuthService {
   getToken(): string {
     return sessionStorage.getItem('token') || '';
   }
+
+  isClientLoggedIn() {
+    return sessionStorage.getItem('token') || false;
+  }
 }
