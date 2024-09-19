@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://localhost:8088/"
+  apiUrl: "http://localhost:8088/",
+  chatServerApi: "http://localhost:8090/agent/",
+  web_soket: "http://localhost:8090/ws"
 };
 
 /*

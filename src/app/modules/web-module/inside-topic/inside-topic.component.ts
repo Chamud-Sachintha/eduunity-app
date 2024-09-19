@@ -1,4 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
@@ -8,7 +10,7 @@ import { GeminiService } from 'src/app/services/gemini/gemini.service';
 @Component({
   selector: 'app-inside-topic',
   standalone: true,
-  imports: [IonicModule],
+  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './inside-topic.component.html',
   styleUrls: ['./inside-topic.component.scss'],
 })
@@ -17,6 +19,7 @@ export class InsideTopicComponent implements OnInit {
   topicContentRequest = new GenerateTopicContent();
   moduleId!: any;
   formattedContent!: SafeHtml;
+  thirdpartyLinks: any[] = [];
 
   constructor(private geminiService: GeminiService, private acivatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
 
@@ -38,10 +41,19 @@ export class InsideTopicComponent implements OnInit {
           .replace(/\n<br><br>/g, '<br>'); // Adjust double newlines
 
           this.formattedContent = this.sanitizer.bypassSecurityTrustHtml(contentWithLineBreaks);
+
+          resp.links.forEach((el: any) => {
+            this.thirdpartyLinks.push(el);
+          })
       } else {
 
       }
     })
+  }
+
+  onClickOpenLink(link: any) {
+    window.location.href = link;
+    return false;
   }
 
 }

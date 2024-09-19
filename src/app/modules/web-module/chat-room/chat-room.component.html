@@ -1,0 +1,72 @@
+<ion-content [fullscreen]="true">
+  <div class="rec">
+    <div class="row" style="padding-top: 10px;">
+      <div class="col-12 ms-3" style="margin-top: 10px;">
+        <a href="/">
+          <ion-img src="../../../../assets/icon/back.png" style="max-width: 30px;"></ion-img>
+        </a>
+      </div>
+      <div class="col-12">
+        <h1 class="welcome-heading ms-3">Reserve Your Paris Tour</h1>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="container py-5">
+  
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-4">
+  
+          <div class="card" id="chat1" style="border-radius: 15px;">
+            <div class="card-body">
+
+              <div class="card-body" style="max-height: 700px; min-height: 400px; overflow: scroll;">
+    
+                <!-- <div class="d-flex flex-row justify-content-end mb-4">
+                  <div class="p-3 me-3 border" style="border-radius: 15px; background-color: #fbfbfb;">
+                    message content
+                    <p class="small mb-0"></p>
+                  </div>
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                    alt="avatar 1" style="width: 45px; height: 100%;">
+                </div> -->
+
+                <div *ngFor="let eachMessage of this.messageArray">
+                  <div *ngIf="eachMessage.senderName != this.userName" class="d-flex flex-row justify-content-start mb-4">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                      alt="avatar 1" style="width: 45px; height: 100%;">
+                    <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
+                      <p class="small mb-0">{{ eachMessage.message }}</p>
+                    </div>
+                  </div>
+
+                  <div *ngIf="eachMessage.senderName == this.userName" class="d-flex flex-row justify-content-end mb-4">
+                    <div class="p-3 me-3 border" style="border-radius: 15px; background-color: #fbfbfb;">
+                      <p class="small mb-0">{{ eachMessage.message }}</p>
+                    </div>
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                      alt="avatar 1" style="width: 45px; height: 100%;">
+                  </div>
+                </div>
+    
+                
+              </div>
+  
+              <div class="form-outline">
+                <form [formGroup]="messageForm">
+                  <textarea class="form-control" id="textAreaExample" rows="4" formControlName="message" (keyup.enter)="sendPrivateMessage()"></textarea>
+                  <label class="form-label" for="textAreaExample">Type your message</label>
+                </form>
+              </div>
+  
+            </div>
+          </div>
+  
+        </div>
+      </div>
+  
+    </div>
+  </section>
+
+</ion-content>

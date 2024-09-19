@@ -5,6 +5,8 @@ import { LeaningComponent } from './leaning/leaning.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { InsideModuleComponent } from './inside-module/inside-module.component';
 import { InsideTopicComponent } from './inside-topic/inside-topic.component';
+import { ChatComponent } from './chat/chat.component';
+import { ChatRoomComponent } from './chat-room/chat-room.component';
 
 const routes: Routes = [
   {
@@ -33,6 +35,18 @@ const routes: Routes = [
   {
     path: 'inside-topic/:moduleId',
     component: InsideTopicComponent,
+    pathMatch: 'full'
+  },
+
+  {
+    path: 'live-chat',
+    component: ChatComponent,
+    pathMatch: 'full'
+  },
+
+  {
+    path: 'chat-room',
+    component: ChatRoomComponent,
     pathMatch: 'full'
   },
 

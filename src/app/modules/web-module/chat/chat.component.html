@@ -1,0 +1,43 @@
+<ion-content [fullscreen]="true">
+  <div class="rec">
+    <div class="row" style="padding-top: 10px;">
+      <div class="col-12 ms-3" style="margin-top: 10px;">
+        <a href="/">
+          <ion-img src="../../../../assets/icon/back.png" style="max-width: 30px;"></ion-img>
+        </a>
+      </div>
+      <div class="col-12">
+        <h1 class="welcome-heading ms-3">Reserve Your Paris Tour</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-3">
+    <div class="row" *ngFor="let eachAgent of this.agentList">
+      <div class="col-12">
+        <a style="text-decoration: none;" (click)="setAgentData(eachAgent.userName)">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-6">
+                  <div class="circle">
+                    <p class="circle-inner">{{ eachAgent.agentName[0] }}</p>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <h5>{{ eachAgent.agentName }}</h5>
+  
+                  <div class="row">
+                    <div class="col-12">
+                      <h6>{{ currentDateTime }}</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</ion-content>
