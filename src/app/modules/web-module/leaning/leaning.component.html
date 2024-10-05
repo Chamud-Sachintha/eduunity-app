@@ -7,6 +7,11 @@
 
     <div class="card learning-profile-card" *ngFor="let eachModule of this.moduleList" (click)="onClickModule(eachModule.id)">
       <div class="card-body">
+        <div>
+          <ion-badge style="float: right;" color="success" *ngIf="eachModule.experiancedLevel == '1'">Beginner</ion-badge>
+          <ion-badge style="float: right;" color="tertiary" *ngIf="eachModule.experiancedLevel == '2'">Intermidiate</ion-badge>
+          <ion-badge style="float: right;" color="primary" *ngIf="eachModule.experiancedLevel == '3'">Beginner</ion-badge>
+        </div>
         <h6>{{ eachModule.moduleName }}</h6>
 
         <div class="row">
@@ -32,28 +37,30 @@
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
-        <ion-item>
-          <ion-input
-            label="Enter Module name"
-            labelPlacement="stacked"
-            type="text"
-            placeholder="Your Module Name"
-          ></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-select label="Module Level" placeholder="Select You Level">
-            <ion-select-option value="apple">Beginner</ion-select-option>
-            <ion-select-option value="banana">Intermidiate</ion-select-option>
-            <ion-select-option value="orange">Advanced</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <ion-item>
-          <label for="">Want to Include Youtube Link References ?</label>
-          <ion-radio-group value="strawberries">
-            <ion-radio value="grapes">Yes</ion-radio><br />
-            <ion-radio value="strawberries">No</ion-radio><br />
-          </ion-radio-group>
-        </ion-item>
+        <form action="" [formGroup]="createLearningProfileForm">
+          <ion-item>
+            <ion-input formControlName="moduleName"
+              label="Enter Module name"
+              labelPlacement="stacked"
+              type="text"
+              placeholder="Your Module Name"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-select label="Module Level" placeholder="Select You Level" formControlName="moduleLevel">
+              <ion-select-option value="1">Beginner</ion-select-option>
+              <ion-select-option value="2">Intermidiate</ion-select-option>
+              <ion-select-option value="3">Advanced</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <label for="">Want to Include Youtube Link References ?</label>
+            <ion-radio-group value="strawberries" formControlName="isLinkWant">
+              <ion-radio value="0">Yes</ion-radio><br />
+              <ion-radio value="1">No</ion-radio><br />
+            </ion-radio-group>
+          </ion-item>
+        </form>
       </ion-content>
     </ng-template>
   </ion-modal>

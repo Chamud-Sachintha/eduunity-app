@@ -6,11 +6,12 @@ import { ActivatedRoute } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { GenerateTopicContent } from 'src/app/models/GenerateTopicContent/generate-topic-content';
 import { GeminiService } from 'src/app/services/gemini/gemini.service';
+import { BackComponentComponent } from '../back-component/back-component.component';
 
 @Component({
   selector: 'app-inside-topic',
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule, BackComponentComponent],
   templateUrl: './inside-topic.component.html',
   styleUrls: ['./inside-topic.component.scss'],
 })
@@ -20,11 +21,13 @@ export class InsideTopicComponent implements OnInit {
   moduleId!: any;
   formattedContent!: SafeHtml;
   thirdpartyLinks: any[] = [];
+  backPath = '';
 
   constructor(private geminiService: GeminiService, private acivatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.moduleId = this.acivatedRoute.snapshot.params['moduleId'];
+    this.backPath = 'inside-module' + "/" + this.moduleId;
     this.generateTopicContent()
   }
 

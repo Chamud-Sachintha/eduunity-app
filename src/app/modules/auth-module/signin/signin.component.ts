@@ -118,6 +118,7 @@ export class SigninComponent  implements OnInit {
         if (resp.code === 1) {
           this.presentAlert("Login Student", "Login Successfully");
           sessionStorage.setItem("userId", resp.data.id);
+          localStorage.setItem("emailAddress", resp.data.email);
           sessionStorage.setItem("token", resp.token);
 
           setTimeout(() => {

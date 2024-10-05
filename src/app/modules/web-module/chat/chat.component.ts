@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { ChatService } from 'src/app/services/chat/chat.service';
+import { BackComponentComponent } from '../back-component/back-component.component';
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule, BackComponentComponent],
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss'],
 })

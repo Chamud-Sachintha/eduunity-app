@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { GenerateNewModuleRequest } from 'src/app/models/GenerateNewModuleRequest/generate-new-module-request';
 import { GenerateTopicContent } from 'src/app/models/GenerateTopicContent/generate-topic-content';
 import { environment } from 'src/environments/environment';
 
@@ -23,5 +24,15 @@ export class GeminiService {
   getTopicContent(topicContentRequest: GenerateTopicContent) {
     const path = environment.apiUrl + "generate/get-module-content";
     return this.http.post(path, topicContentRequest);
+  }
+
+  generateNewModule(generateModuleRequest: GenerateNewModuleRequest) {
+    const path = environment.apiUrl + "generate/new-module";
+    return this.http.post(path, generateModuleRequest);
+  }
+
+  levelUpModule(generateModuleRequest: GenerateNewModuleRequest) {
+    const path = environment.apiUrl + "generate/level-up-module";
+    return this.http.post(path, generateModuleRequest);
   }
 }
