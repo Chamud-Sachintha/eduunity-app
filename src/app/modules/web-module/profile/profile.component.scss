@@ -1,0 +1,92 @@
+.oval-container {
+    background-color: blueviolet;
+    height: 20vh;
+    border-bottom-left-radius: 50%;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@300&family=Open+Sans:wght@300&family=Poppins:wght@200&display=swap');
+
+.name {
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    // line-height: 36px;
+    /* or 138% */
+
+    color: #19191B;
+}
+
+.btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 12px;background: rgba(68, 68, 68, 0.15);border-radius: 20px 0 0 20px;}
+.btn-labeled {padding-top: 0;padding-bottom: 0;}
+.btn { margin-bottom:10px; background-color: #19191B; }
+
+.login-btn {
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    font-style: normal;
+    // font-weight: 600;
+    font-size: 20px;
+    line-height: 18px;
+    color: #FFFFFF;
+    background: #1E232C;
+    border-radius: 50px;
+    width: 60%;
+    height: 56px;
+}
+
+.email {
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    // line-height: 36px;
+    /* or 138% */
+
+    color: #19191B;
+}
+
+.profile-edit-btn {
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    font-style: normal;
+    // font-weight: 600;
+    font-size: 20px;
+    line-height: 18px;
+    color: #FFFFFF;
+    background: #1E232C;
+    border-radius: 50px;
+    width: 60%;
+    height: 56px;
+}
+
+.sub-title {
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 24px;
+    /* or 175% */
+    text-align: center;
+    letter-spacing: -0.408px;
+    text-align: left;
+
+    color: #252525;
+}
+
+.circle {
+    display: inline-block;
+      background-color: bisque;
+      margin: 10px;
+      border-radius: 50%;
+  }
+  
+  .circle-inner {
+    color: white;
+    display: table-cell;
+    vertical-align: middle; 
+    text-align: center;
+    text-decoration: none;
+    height: 100px;
+    width: 100px;  
+    font-size: 30px;
+  }

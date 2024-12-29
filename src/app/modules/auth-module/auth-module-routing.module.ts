@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
+import { StartScreenComponent } from './start-screen/start-screen.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'start',
     pathMatch: 'full'
   },
 
@@ -28,6 +29,12 @@ const routes: Routes = [
         component: SignupComponent
       }
     ]
+  },
+
+  {
+    path: 'start',
+    component: StartScreenComponent,
+    pathMatch: 'full'
   }
 ];
 

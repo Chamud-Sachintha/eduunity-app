@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { AlertController, IonicModule, LoadingController } from '@ionic/angular';
 import { GenerateTopicContent } from 'src/app/models/GenerateTopicContent/generate-topic-content';
 import { GeminiService } from 'src/app/services/gemini/gemini.service';
 import { BackComponentComponent } from '../back-component/back-component.component';
@@ -23,7 +23,9 @@ export class InsideTopicComponent implements OnInit {
   thirdpartyLinks: any[] = [];
   backPath = '';
 
-  constructor(private geminiService: GeminiService, private acivatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
+  constructor(private geminiService: GeminiService, private acivatedRoute: ActivatedRoute, private sanitizer: DomSanitizer
+              , private loadingCtrl: LoadingController, private alertController: AlertController
+  ) { }
 
   ngOnInit() {
     this.moduleId = this.acivatedRoute.snapshot.params['moduleId'];
@@ -31,9 +33,16 @@ export class InsideTopicComponent implements OnInit {
     this.generateTopicContent()
   }
 
-  generateTopicContent() {
+  async generateTopicContent() {
     this.topicContentRequest.moduleId = this.moduleId;
     this.topicContentRequest.moduleContentName = localStorage.getItem("topicName");
+
+    const loading = await this.loadingCtrl.create({
+      message: ' Please wait a moment',
+      translucent: true
+    });
+
+    loading.present();
 
     this.geminiService.getTopicContent(this.topicContentRequest).subscribe((resp: any) => {
       if (resp.code === 1) {
@@ -48,10 +57,24 @@ export class InsideTopicComponent implements OnInit {
           resp.links.forEach((el: any) => {
             this.thirdpartyLinks.push(el);
           })
-      } else {
 
+          loading.dismiss();
+      } else {
+        this.presentAlert("Loading Topic Content", resp.message)
+        loading.dismiss();
       }
     })
+  }
+
+  async presentAlert(subHeader: string, alertMessage: string) {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      subHeader: subHeader,
+      message: alertMessage,
+      buttons: ['OK'],
+    });
+
+    await alert.present();
   }
 
   onClickOpenLink(link: any) {

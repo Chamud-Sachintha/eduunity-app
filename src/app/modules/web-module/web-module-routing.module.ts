@@ -7,6 +7,7 @@ import { InsideModuleComponent } from './inside-module/inside-module.component';
 import { InsideTopicComponent } from './inside-topic/inside-topic.component';
 import { ChatComponent } from './chat/chat.component';
 import { ChatRoomComponent } from './chat-room/chat-room.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,12 @@ const routes: Routes = [
   {
     path: 'chat-room',
     component: ChatRoomComponent,
+    pathMatch: 'full'
+  },
+
+  {
+    path: 'profile',
+    component: ProfileComponent,
     pathMatch: 'full'
   },
 

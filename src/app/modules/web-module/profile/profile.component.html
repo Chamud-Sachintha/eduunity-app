@@ -1,3 +1,34 @@
-<p>
-  profile works!
-</p>
+<ion-content>
+  <div class="oval-container">
+    <app-back-component [backPath]="this.backPath"></app-back-component>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12 text-center">
+      <div class="circle">
+        <p class="circle-inner">CS</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12 text-center" *ngIf="this.gender == 'male'">
+      <img width="96" height="96" src="../../../../assets/images/male.png" alt="circled-user-male-skin-type-7--v1"/>
+    </div>
+    <div class="col-12 text-center" *ngIf="this.gender == 'female'">
+      <img width="96" height="96" src="../../../../assets/images/female.png" alt="circled-user-male-skin-type-7--v1"/>
+    </div>
+    <div class="col-12 text-center">
+      <p class="name">Chamud Sachintha</p>
+      <p class="email" style="margin-top: -10px;">chamud123gmail.com</p>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12 text-center">
+      <button class="profile-edit-btn mb-3">Edit Profile</button>
+      <hr style="background-color: black; margin-top: 10px;">
+      <button class="login-btn mt-3" role="button"><i class="fa fa-sign-out me-2" aria-hidden="true"></i>Sign out</button>
+    </div>
+  </div>
+</ion-content>
